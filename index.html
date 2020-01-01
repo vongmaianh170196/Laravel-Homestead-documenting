@@ -1,0 +1,68 @@
+<h2>Laravel Homestead installation with Vagrant for Window 10</h2>
+<div>
+    <h4>Requirements installations </h4>
+<ul>
+    <li>Virtualbox</li>
+    <li>Vagrant</li>
+    <li>Git bash</li>
+    <li>HeidiSQL</li>
+</ul>
+</div>
+<div>
+    <h4>Set up</h4>
+    <div>
+        <b>Step 1 (define where you would like to place your Homestead box. In this case, I choose to place them in same directory with /User/user_name folder)</b>
+        <p>- Open Git bash terminal</p>
+        <p>- Type `vagrant box add laravel/homestead`</p>
+        <p>- cd ~</p>
+        <p>- Type `git clone https://github.com/laravel/homestead.git Homestead`</p>
+        <p>- cd Homestead</p>
+        <p>- Type `bash init.sh`</p>
+        <b>Step 2: Configuration</b>
+        <p>- Check if in the /Users/user_name folder there is .ssh file, if not, run this `ssh-keygen -t rsa -C “your_email@example.com”` </p>
+        <p>- Open Homestead.yaml file</p>
+        <div>
+            <p>The "keys" and "authorize" will be modify according to where your Homestead folder is located. In this case, it will be</p>
+            <img src="./img//id_rsa.png"/>
+        </div>        
+        <div>
+            <p>The "folders" part</p>
+            <img src="./img/folders.png"/>
+            <p>In this section you will map your_project_folder to vagrant_folder. So in my case, my_project_folder is in A:/laravel/vagrant-laravel-homestead, and I would like it to map to vagrant-laravel-homestead folder in vagrant. Which will be like this</p>
+            <img src="./img/folders_modify.png"/>
+            <p>The "sites" part</p>
+            <img src="./img/sites_default.png"/>
+            <p>In this section you will point your_site to vagrant_folder where your project is map to. So in my case, my site_name is homestead.test, and my vagrant folder is vagrant-laravel-homestead folder in vagrant. Which will be like this</p>
+            <img src="./img/sites_modify.png"/>
+        </div>
+        <div>
+            <p>You can modify the database with your_database_name in "database" part</p>
+            <img src="./img//database.png"/>           
+        </div>
+        <b>Step 3: Up and run</b>
+        <p>Notes: if your Virtualbox version is not supported by Vagrant yet, you can refer the tutorials from <a href="https://github.com/oracle/vagrant-boxes/issues/178">here</a></p>
+        <img src="./img/virtual_6_1.png"/>
+        <div>
+            <p>To start Vagrant `vagrant up`</p>
+            <p>- Type `vagrant ssh`</p>
+            <p>To login, type `ls`</p>
+            <p>`cd your_vagrant_folder`</p>
+            <p>`composer create-project --prefer-dist laravel/laravel Your_Laravel_Project`</p>
+            <p>Open the browser and go to "192.168.10.10". You can change this to your_site_name by changing the "hosts" file in "C:\Windows\System32\drivers\etc"</p>
+            <p>To logout Vagrant, "exit"</p>
+            <p>To stop homestead "vagrant halt"</p>
+        </div>
+        <b>Step 4: Connecting to database with HeidiSQL</b>   
+        <p>Hostname: 127.0.0.1</p>   
+        <p>Username: homestead</p>  
+        <p>Password: secret</p>
+        <p>Database: your_database_name</p>
+    </div>
+    <div>
+        <b>References</b>
+        <p><a href="https://laravel.com/docs/6.x/homestead#first-steps">Laravel homestead official Document. 01.01.2020</a></p>
+        <p><a href="https://medium.com/@eaimanshoshi/i-am-going-to-write-down-step-by-step-procedure-to-setup-homestead-for-laravel-5-2-17491a423aa">Laravel Homestead with Windows 10 Step by Step setup procedure with the explanation. By Eaiman Shoshi. 01.01.2020
+        </a></p>
+        <p><a href="https://github.com/oracle/vagrant-boxes/issues/178">Virtualbox and Vagrant version issue. 01.01.2020</a></p>
+    </div>
+</div>
